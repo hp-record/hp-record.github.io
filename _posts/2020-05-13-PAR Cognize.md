@@ -16,7 +16,9 @@ excerpt: 目前对PAR的认识，随时补充
   * **[2.2 现状评述](#2.2)**
     * **[2.2.1 PAR-Benchmarks](#2.2.1)**
     * **[2.2.2 PAR-Regular Pipeline](#2.2.2) **
-  * **[2.2.3  PAR-Algorithms](#2.2.3)**
+    * **[2.2.3  PAR-Algorithms](#2.2.3)**
+      * **[2.2.3.1  经典的深度神经网络](#2.2.3.1)**
+      * **[2.2.3.2  一些PAR算法](#2.2.3)**
   * **[2.3 发展前景预测](#2.3)**
 * **[3. 总结](#3)**
 * **[4. 参考列表](#4)**
@@ -306,7 +308,9 @@ t(x)扮演阈值函数的角色，把标签空间对分成相关的标签集和�
 
 ### 2.2.3 PAR-Algorithms <span id="2.2.3">
 
-在介绍算法之前，先回顾下常用(或者叫经典)的深度神经网络：
+在介绍算法之前，先回顾下常用(或者叫经典)的深度神经网络.
+
+#### 2.2.3.1  经典的深度神经网络<span id="2.2.3.1">
 
 1.LeNet
 
@@ -429,89 +433,159 @@ Kaiming He 的《Deep Residual Learning for Image Recognition》获得了CVPR最
 
 ·介绍：
 
+胶囊网络（Capsule Networks）是深度学习三巨头之一的Geoffrey Hinton于2017年提出的一种全新的神经网络。胶囊网络基于一种新的结构——胶囊（Capsule），通过与现有的卷积神经网络（CNN）相结合，从而在一些图像分类的数据上取得了非常优越的性能。
 
+理解胶囊网络，首先需要抛开对CNN架构的固有印象，因为Geoffrey Hinton实际上认为在CNN中应用pooling是一个很大的错误，它工作得很好的事实是一场灾难。在最大池化过程中，很多重要的信息都损失了，因为只有最活跃的神经元会被选择传递到下一层，而这也是层之间有价值的空间信息丢失的原因。（比如说：一张图包含人脸所有特征，但是位置是乱的，固有的CNN依然识别这是人脸，Hinton认为这是不对的。）
 
 ·网络结构：
 
+[胶囊网络](jiqizhixin.com/graph/technologies/ed5dbe49-af23-4688-8a58-74577d608c60)、[理解和使用胶囊网络](https://www.jiqizhixin.com/articles/2019-01-18-14)
 
+![CapsuleNet.jpg](https://i.loli.net/2020/05/25/APzTZIpR5vg4qD7.jpg)
 
 8.Graph Convolutional Network
 
 ·介绍：
 
+2018年，Chen, J. et al.提出基于控制变量的图卷积网络（GCN），有效减少感受野大小。
+
+图（graph）是一种数据格式，它可以用于表示社交网络、通信网络、蛋白分子网络等，图中的节点表示网络中的个体，连边表示个体之间的连接关系。许多机器学习任务例如社团发现、链路预测等都需要用到图结构数据，因此图卷积神经网络的出现为这些问题的解决提供了新的思路。
+
 ·网络结构：
 
+[图卷积网络](https://www.jiqizhixin.com/graph/technologies/eee9ade4-80fd-4821-9dce-2dce5e898b42)、[图神经网络](https://www.jiqizhixin.com/graph/technologies/c39cf57b-df95-4c9e-9a8a-0d8ea330d625)
 
+![Graph convolution network.png](https://i.loli.net/2020/05/25/NcC7BSqEJ21RK3F.png)
 
 9.ReNet
 
 ·介绍：
 
+2015年， F. Visin等人提出了一个基于循环神经网络的用于目标识别的网络结构，称为ReNet。
+
+ReNet用基于四个方向的 RNN 来替换掉 CNN中的 convolutional layer（即：卷积+Pooling 的组合）。通过在前一层的 feature 上进行四个方向的扫描，完成特征学习的过程。
+
 ·网络结构：
 
+[ReNet笔记](https://www.cnblogs.com/wangxiaocvpr/p/8507970.html)
 
+![ReNet.png](https://i.loli.net/2020/05/25/9Mjx7IraGoXL25A.png)
 
 10.Recurrent Neural Network, RNN.
 
 ·介绍：
 
+NLP里最常用、最传统的深度学习模型就是**循环神经网络 RNN**（Recurrent Neural Network）。
+
+递归神经网络，RNN。传统的神经网络基于所有输入和输出彼此独立的假设，但是该假设在许多任务（例如句子翻译）中可能并不正确。提出了递归神经网络（RNN）来处理涉及顺序信息的任务。 RNN之所以称为递归，是因为它们对序列的每个元素执行相同的任务，其输出取决于先前的计算。思考RNN的另一种方法是，它们具有“内存”，可以捕获有关到目前为止已计算出的内容的信息。理论上，RNN可以任意长的顺序使用信息，但实际上，它们仅限于回顾一些步骤。
+
 ·网络结构：
 
+[RNN 结构详解](https://www.jiqizhixin.com/articles/2018-12-14-49)，循环神经网络的类型有很多，如下：
 
+![RNN.png](https://i.loli.net/2020/05/25/nrhvYIotWKek1V2.png)
 
 11.Long Short-term Memory, LSTM
 
 ·介绍：
 
+长短期记忆(Long Short-Term Memory) （1997提出）是具有长期记忆能力的一种时间递归神经网络(Recurrent Neural Network)。 其网络结构含有一个或多个具有可遗忘和记忆功能的单元组成。它在1997年被提出用于解决传统RNN(Recurrent Neural Network) 的随时间反向传播中权重消失的问题（vanishing gradient problem over backpropagation-through-time)，重要组成部分包括Forget Gate, Input Gate, 和 Output Gate, 分别负责决定当前输入是否被采纳，是否被长期记忆以及决定在记忆中的输入是否在当前被输出。Gated Recurrent Unit 是 LSTM 众多版本中典型的一个。因为它具有记忆性的功能，LSTM经常被用在具有时间序列特性的数据和场景中。
+
+LSTM网络由重复结构的LSTM单元组成，与RNN不同之处在于，重复的单元有四层特殊的结构（RNN只有一层）。
+
 ·网络结构：
 
+[人人都能看懂的LSTM](https://zhuanlan.zhihu.com/p/32085405)、[长短期记忆网络](https://www.jiqizhixin.com/graph/technologies/e733c4c8-276b-428f-a43c-45e6044d5b7a)
 
+![LSTM.png](https://i.loli.net/2020/05/25/yGdrxlfu7Q6LbcO.png)
 
 12.GRU.
 
 ·介绍：
 
+GRU（2014年提出）（Gate Recurrent Unit）是循环神经网络（Recurrent Neural Network, RNN）的一种。和LSTM（Long-Short Term Memory）一样，也是为了解决长期记忆和反向传播中的梯度等问题而提出来的。
+
+GRU输入输出的结构与普通的RNN相似，其中的内部思想与LSTM相似。
+
+相比LSTM，使用GRU能够达到相当的效果，并且相比之下更容易进行训练，能够很大程度上提高训练效率，因此很多时候会更倾向于使用GRU。
+
 ·网络结构：
 
+[GRU的基本概念与原理](https://www.jiqizhixin.com/articles/2017-12-24)、[人人都能看懂的GRU](https://zhuanlan.zhihu.com/p/32481747)
 
+<img src="https://i.loli.net/2020/05/25/d8OamlHYEFQcI1z.png" alt="GRU.png" style="zoom:80%;" />
 
 13.Recursive Neural Network (RvNN) 
 
 ·介绍：
 
+RvNN（2014提出的）的基本思想很简单：将处理问题在结构上分解为一系列相同的“单元”，单元的神经网络可以在结构上展开，且能沿展开方向传递信息。与RNN的思想类似，只不过将“时序”转换成了“结构”。
+
+递归神经网络是一种深层神经网络，它是通过在结构化输入上递归应用相同的权重集，以在可变大小的输入结构上产生结构化预测来创建的，或对其进行标量预测，方法是按拓扑顺序遍历给定的结构。 RvNN在例如自然语言处理的学习序列和树结构（主要是基于词嵌入的短语和句子连续表示）方面已经取得了成功。
+
 ·网络结构：
 
+[神经网络基础：DNN、CNN、RNN、RvNN、梯度下降、反向传播](https://blog.csdn.net/echoKangYL/article/details/86712657)、[Lecture 3 RvNN](https://www.jianshu.com/p/0249adb0b4c3)
 
+<img src="https://i.loli.net/2020/05/25/nJtDKlxMwVirkIQ.png" alt="RvNN.png" style="zoom:80%;" />
 
 14.Sequential CNN. 
 
 ·介绍：
 
+Sequential CNN与使用RNN编码时间序列输入的常规工作不同，研究人员还研究了CNN以实现更有效的操作。借助递归神经网络顺序CNN，可以在训练过程中对所有元素的计算进行完全并行化，以更好地利用GPU硬件，并且由于非线性的数量是固定且与输入长度无关。
+
 ·网络结构：
 
-
+![Sequentia CNN.jpg](https://i.loli.net/2020/05/25/esQd9tqm7zngBru.jpg)
 
 15.External Memory Network.
 
 ·介绍：
 
+外部存储网络。视觉注意力机制可以看作是一种短期记忆，可以将注意力分配到他们最近看到的输入功能上，而外部记忆网络可以通过读写操作来提供长期记忆。它已广泛用于许多应用中，例如视觉跟踪，视觉问答。
+
 ·网络结构：
 
-
+![External Memory Network.jpg](https://i.loli.net/2020/05/25/Xi5rK1fUpV7d6bM.jpg)
 
 16.Deep Generative Model.
 
 ·介绍：
 
+深度生成模型基本都是以某种方式寻找并表达（多变量）数据的概率分布。有基于无向图模型（马尔可夫模型）的联合概率分布模型，另外就是基于有向图模型（贝叶斯模型）的条件概率分布。前者的模型是构建隐含层(latent)和显示层（visible)的联合概率，然后去采样。基于有向图的则是寻找latent和visible之间的条件概率分布，也就是给定一个随机采样的隐含层，模型可以生成数据。
+
+近年来，深度生成模型取得了长足的发展，并且提出了许多流行的算法，例如VAE（可变自动编码器），GAN（生成对抗网络），CGAN（条件生成对抗网络）。可以找到这三个模型的图示。我们认为基于属性的行人图像生成策略可以处理低分辨率，不平衡的数据分布问题并显着增强训练数据集。
+
 ·网络结构：
 
+[深度生成模型](https://www.jiqizhixin.com/graph/technologies/77c3d598-259e-4ecc-9617-bd27ca2098fd)、[Deep Generative Mode](https://www.cnblogs.com/Terrypython/p/9459584.html)
+
+![Deep Generative Model.jpg](https://i.loli.net/2020/05/25/M65DIE9HJdynOAi.jpg)
+
+#### 2.2.3.2 一些PAR算法<span id="2.2.3.2">
+
+将从以下八个方面回顾基于深度神经网络的PAR算法：基于全局的，基于局部的，基于视觉注意的，基于顺序预测的，基于新设计的损失函数的，基于课程学习的，基于图形模型的以及其他算法。
+
+1.基于全局的(Global Image-based Models)
+
+在这一趴，将回顾仅考虑全局图像的PAR算法，比如ACN [5]，DeepSAR [6]，DeepMAR [6]，MTCNN [7]。
 
 
-17.
 
+2.基于局部的(Part-based Models)
 
+3.基于视觉注意的(Attention-based Models)
 
+4.基于顺序预测的(Sequential Prediction based Models)
 
+5.基于新设计的损失函数的(Loss Function based Models)
+
+6.基于课程学习的(Curriculum Learning based Algorithms)
+
+7.基于图形模型的(Graphic Model based Algorithms)
+
+8.其他(Other Algorithms)
 
 
 
