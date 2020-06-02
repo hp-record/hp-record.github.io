@@ -1,9 +1,9 @@
 ---
-title: 行人属性识别的认识
+title: 行人属性识别(PAR)-综述
 layout: post
 categories: PAR
 tags: 综述
-excerpt: 目前对PAR的认识，随时补充
+excerpt: 目前对PAR的了解，随时补充
 ---
 
 ---------
