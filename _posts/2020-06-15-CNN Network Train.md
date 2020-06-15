@@ -1,5 +1,5 @@
 ---
-title：网络训练知识的相关总结
+title: 网络训练（Network Train）知识的相关总结
 layout: post
 categories: CNN 
 tags: Network-Train
