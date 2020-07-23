@@ -1,5 +1,5 @@
 ---
-title: Merkdown基本语法
+title: Markdown基本语法
 layout: post
 categories: Markdown
 tags: grammar
@@ -23,11 +23,56 @@ excerpt: markdown的基本使用语法
 
 ## **标题**
 
-使用'#' 可以展现1-6级别的标题
+第一个方法：
+
+​	使用'#' 可以展现1-6级别的标题
 
 ```
 # 一级标题## 二级标题### 三级标题
 ```
+
+第二个方法：
+
+​	一级标题ctrl+1
+
+​	二级标题 ctrl+2
+
+​	三级标题ctrl+3
+
+​	四级标题ctrl+4
+
+​	五级标题 ctrl+5
+
+#### 常用快捷键
+
+加粗：Ctrl+B
+
+斜体：Ctrl+I
+
+字体：Ctrl+数字
+
+下划线：Ctrl+U
+
+返回开头：Ctrl+Home
+
+返回结尾：Ctrl+End
+
+生成表格：Ctrl+T
+
+创建链接：Ctrl+K
+
+插入目录：输入[toc]
+
+删除线：两个开头，两个结尾， 一对双波浪线
+
+输入<><> 括号里分别写center /center
+
+<center>居中</center>
+
+表情：happy： :happy:
+
+三个- 分隔线
+
 
 ## **列表**
 
@@ -52,6 +97,12 @@ excerpt: markdown的基本使用语法
 效果：[Github地址](https://github.com/youngyangyang04/Markdown-Resume-Template)
 
 ## **添加代码**
+
+* 第一个方法：
+
+**输入三个~即插入代码块，或右键插入代码块。**
+
+* 第二个方法：
 
 对于代码块使用 ` 把代码括起来 例如 `int a = 0;` 或者使用 ``` 把代码块括起来 例如：
 
@@ -81,6 +132,17 @@ Markdown支持部分html，例如这样
 ```
 <center><h1>XXX</h1> </center>
 ```
+
+## 添加公式
+
+- 点击“段落”—>“公式块”
+- 右键插入公式块
+- 快捷键Ctrl+Shift+m
+- “$$”+回车
+
+以上方式都能打开数学公式的编辑栏。
+
+[常用公式1](https://blog.csdn.net/mingzhuo_126/article/details/82722455) [常用公式2](https://juejin.im/post/5a6721bd518825733201c4a2)
 
 # Markdown 渲染
 
